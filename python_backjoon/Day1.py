@@ -51,4 +51,40 @@ result=A*3600+B*60+C+D
 print(result//3600%24, result//60%60, result%60)
 
 # 백준 2914 - 저작권
-a, b = map(int, input().split())
+# 앨범 수록곡 개수 a, 평균값 i
+# 구하려는 값은 저작권이 있는 멜로디
+# i는 평균의 올림값이기 때문에 
+# 저작권 멜로디의 최소값는 a*(i-1)에서 +1을해주면 평균값이 올림값이 됨
+a, i = map(int, input().split())
+print(a*(i-1)+1)
+
+# 백준 5355 - 화성수학
+# 테스트 케이스 개수
+t = int(input())
+
+# t에 저장된 케이스 수만큼 반복
+for i in range(t):
+    # l에 문자열을 입력받아 분할
+    l = list(map(str, input().split()))
+
+    # 매개변수로 받은 식을 문자열로 받아 실행하는 함수(eval)
+    result = eval(l[0])
+    
+    # l의 길이만큼 반복
+    for j in range(len(l)):
+        if l[j] == '@':
+            result *= 3
+        elif l[j] == '%':
+            result += 5
+        elif l[j] == '#':
+            result -= 7
+    print("%0.2f" %result)
+    
+# 백준 2675 - 문자열 반복
+t = int(input())
+    
+for i in range(t):
+    r, s = input().split()
+    for j in s:
+        print(j*int(r), end = "") #end를 활용한 공백 없애기
+    print()
