@@ -23,3 +23,15 @@ for i in range(n-1):
     result += 1
 print(result)
 
+# 백준 24264 - 알고리즘 수업-알고리즘의 수행시간3
+# 실패
+n = int(input())
+
+# 백준 2562 - 최댓값
+list = []
+for i in range(9):
+  a = int(input())
+  list.append(a)
+print(max(list))
+print(list.index(max(list))+1)
+
