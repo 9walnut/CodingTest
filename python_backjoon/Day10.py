@@ -37,16 +37,18 @@ else:
 # 좌우 반전 출력, 상하 반전 출력은 range에서 바꾸면 되는거 같은데....
 t = 3
 mirror[][]
-k = 1
-if k==1:
+state = int(input())
+if state==1:
   for i in range(t):
     for j in range(t):
       print(mirror[j], end="")
-elif k==2:
+# 좌우 반전
+elif state==2:
   for i in range(t):
     for j in range(t):
       print(mirror[j], end="")
-elif k==3:
+# 상하 반전
+elif state==3:
   for i in range(t):
     for j in range(t):
       print(mirror[j], end="")
