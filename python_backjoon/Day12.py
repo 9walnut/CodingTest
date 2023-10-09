@@ -29,6 +29,7 @@ while True:
     # 결과 출력
     print(" ".join(map(str, opened)))
 
+
 # 백준 5585 - 거스름돈
 t = 720
 changes = [500, 100, 50, 10, 5, 1]
