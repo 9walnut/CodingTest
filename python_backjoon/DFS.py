@@ -60,3 +60,34 @@ for i in range(n):
             dfs(i, j)
             count += 1
 print(count)
+
+# 백준 16173 - 점프왕 쩰리
+
+def dfs(x, y):
+    # 범위 벗어나면 0 처리
+    if x >= t or x <= -1 or y >= t or y <= -1 or visited[x][y] == 1:
+        return
+    if graph[x][y] == -1:
+        visited[x][y] =1
+        return
+    visited[x][y]=1
+
+    # 상하좌우 요소 수만큼 점프 이동
+    dfs(x+graph[x][y],y) #상,하
+    dfs(x, y+graph[x][y]) #좌,우
+
+t= int(input())
+# graph = []
+# for _ in range(t):
+#     graph.append(list(map(int, input().split())))
+graph=[list(map(int, input().split())) for _ in range(t)]
+
+visited = [[0]*t for _ in range(t)]
+
+# 출발지 0,0 호출
+dfs(0, 0)
+# 결과 출력
+if visited[-1][-1] == 1:
+    print("HaruHaru")
+else:
+    print("Hing")
