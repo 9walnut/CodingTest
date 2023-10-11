@@ -19,3 +19,22 @@ board2 = [[0]*(col) for _ in range(row)]
 
 # 그래프 초기화
 graph = [[] for i in range(n+1)]
+
+
+# 유클리드 호제법
+def gcd(a, b):
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b, a % b)
+
+
+print(gcd())
+
+# 최소공배수 구하기
+# 위에서 구한 최대 공약수로 나눠주면 됨
+
+
+def lcm(a, b):
+    result = (a*b)//gcd(a, b)
+    return result
