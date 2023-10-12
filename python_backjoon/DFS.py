@@ -20,7 +20,7 @@ def dfs(link):
     visited[link] = 1
     # grapgh[link]는 link번 컴퓨터에 연결된 리스트
     for nx in graph[link]:
-        if visited[nx] == 0:
+        if visited[nx] == 0:``
             dfs(nx)
 
 
@@ -91,3 +91,41 @@ if visited[-1][-1] == 1:
     print("HaruHaru")
 else:
     print("Hing")
+
+
+# 촌수계산
+
+t = int(input())
+a, b = map(int, input().split())
+p_c = int(input())
+graph = [[] for i in range(t+1)]
+visited = [False] * (t + 1)  # 방문 여부를 나타내는 리스트
+result = []
+
+for i in range(p_c):
+    x, y = map(int, input().split())
+    graph[x].append(y)
+    graph[y].append(x)
+
+def dfs(x, depth):
+    # 방문한 경우 true
+    depth += 1
+    visited[x] = True
+    
+    if x == b:
+        result.append(depth)
+
+    for y in graph[x]:
+        if not visited[y]:
+            dfs(y, depth)
+
+dfs(a, 0)  # a부터 시작하여 촌수 계산
+
+if len(result) == 0:
+    print(-1)
+else:
+    print(result[0] - 1)
+
+
+
+

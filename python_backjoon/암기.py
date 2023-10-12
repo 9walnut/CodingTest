@@ -28,9 +28,6 @@ def gcd(a, b):
     else:
         return gcd(b, a % b)
 
-
-print(gcd())
-
 # 최소공배수 구하기
 # 위에서 구한 최대 공약수로 나눠주면 됨
 
