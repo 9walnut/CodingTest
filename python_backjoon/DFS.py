@@ -93,7 +93,7 @@ else:
     print("Hing")
 
 
-# 촌수계산
+# 촌수계산 - 2644
 
 t = int(input())
 a, b = map(int, input().split())
@@ -126,6 +126,40 @@ if len(result) == 0:
 else:
     print(result[0] - 1)
 
+# 단지번호붙이기 - 2667
+import sys
+t = int(sys.stdin.readline().rstrip())
+graph = []
+for i in range(t):
+    graph.append(list(map(int, sys.stdin.readline().rstrip())))
+home = 0
+cnt = 0
 
+def dfs(x, y):
+    global home
+    if x >= t or x < 0 or y >= t or y < 0:
+        return False
+    if graph[x][y] == 1:
+        home += 1
+        graph[x][y] = 0  #집 카운트 후 0으로 집 없애기
+        dfs(x-1, y)
+        dfs(x, y-1)
+        dfs(x+1, y)
+        dfs(x, y+1)
+        return True
+    return False
+
+nums = []
+for i in range(t):
+    for j in range(t):
+        if dfs(i, j) == True:
+            cnt +=1
+            nums.append(home) # 리스트에 집의 수 출력
+            home = 0 # 한단지에 있는 집의 수 0으로 초기화
+
+nums.sort()
+print(cnt)
+for i in nums:
+    print(i)
 
 
