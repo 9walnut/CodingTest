@@ -5,6 +5,8 @@ link = int(input())  # 연결선 개수
 # 그래프 초기화
 # n+1인 이유는 1번 인덱스에 1번 컴퓨터를 삽입하기 위함
 graph = [[] for i in range(computer+1)]
+
+# [[],[],[],[],[],[],]
 # 방문한 컴퓨터인지 표시
 visited = [0]*(computer+1)
 
@@ -20,17 +22,14 @@ def dfs(link):
     visited[link] = 1
     # grapgh[link]는 link번 컴퓨터에 연결된 리스트
     for nx in graph[link]:
-        if visited[nx] == 0:``
+        if visited[nx] == 0:
             dfs(nx)
-
 
 dfs(1)
 # 1번 컴퓨터를 제외하기 때문에 -1
 print(sum(visited)-1)
 
 # 백준 1388 - 바닥장식
-
-
 def dfs(x, y):
     # 바닥이 "-"일때
     if graph[x][y] == '-':
@@ -91,7 +90,6 @@ if visited[-1][-1] == 1:
     print("HaruHaru")
 else:
     print("Hing")
-
 
 # 촌수계산 - 2644
 
@@ -161,5 +159,3 @@ nums.sort()
 print(cnt)
 for i in nums:
     print(i)
-
-
