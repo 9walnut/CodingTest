@@ -42,3 +42,38 @@ if bfs(0, 0):
     print('HaruHaru')
 else:
     print("Hing")
+
+
+# 바이러스 bfs
+
+
+t = int(input())
+link = int(input())
+graph = [[] for i in range(t+1)]
+visited = [0]*(t+1)
+# 카운트?
+cnt = 0
+
+for i in range(link):
+    a, b = map(int, input().split())
+    graph[a].append[b]
+    graph[b].append[a]
+
+
+def bfs(graph, link):
+    global cnt
+    queue = deque[link]
+
+    while queue:
+        pop = queue.popleft()
+        visited[pop] = True
+
+        for i in graph[pop]:
+            if visited[i] == 0:
+                visited[i] = 1
+                queue.append(i)
+                cnt += 1
+    print(cnt)
+
+
+bfs(graph, 1)
