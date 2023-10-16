@@ -193,3 +193,38 @@ def dfs(x):
 
 dfs(i)
 print(sum(visited)-1)
+
+# 촌수계산 다시풀기
+t = int(input())
+a, b = map(int, input().split())
+link = int(input())
+visited = [0]*(t+1)
+graph = [[] for i in range(t+1)]
+result = []
+
+for i in range(link):
+    a, b = map(int, input().split())
+    graph[a].append[b]
+    graph[b].append[a]
+
+    # 여기까지 작성할 수 있었음
+
+
+def dfs(x, depth):
+    depth += 1
+    visited[x] = 1
+
+    if x == b:
+        # 관계를 추가하는 것이니 depth가 추가
+        result.append(depth)
+    for y in graph[x]:
+        if not visited[y]:
+            dfs(y, depth)
+
+
+dfs(a, 0)
+
+if len(result) == 0:
+    print(-1)
+else:
+    print(result[0] - 1)

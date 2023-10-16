@@ -40,3 +40,10 @@ import sys #한 줄에 여러 입력 값을 받는 함수
 sys.stdin.readline().rstrip() : #오른쪽 공백 제거
 sys.stdin.readline().lstrip() : #왼쪽 공백 제거
 sys.stdin.readline().strip() : #좌우 공백 제거
+
+
+sqrt : 제곱근 구하기
+
+정수, 문자열시 입력값 받기
+a, b = intput().split()
+
