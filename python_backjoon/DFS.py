@@ -203,11 +203,9 @@ graph = [[] for i in range(t+1)]
 result = []
 
 for i in range(link):
-    a, b = map(int, input().split())
-    graph[a].append[b]
-    graph[b].append[a]
-
-    # 여기까지 작성할 수 있었음
+    x, y = map(int, input().split())
+    graph[x].append(y)
+    graph[y].append(x)
 
 
 def dfs(x, depth):
@@ -215,7 +213,6 @@ def dfs(x, depth):
     visited[x] = 1
 
     if x == b:
-        # 관계를 추가하는 것이니 depth가 추가
         result.append(depth)
     for y in graph[x]:
         if not visited[y]:
