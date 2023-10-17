@@ -116,3 +116,38 @@ if result is not None:
     print(result)
 else:
     print(-1)
+
+# 단지번호붙이기
+
+
+def bfs(si, sj):
+    q = []
+    q.append((si, sj))  # 큐 초기 데이터 삽입
+    visited[si][sj] = 1  # 방문표시
+    cnt = 1  # 정답처리
+
+    while q:
+        ci, cj = q.pop(0)
+        for di, dj in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+            ni, nj = ci+di, cj+dj
+            if 0 <= ni < t and 0 <= nj < t and visited[ni][nj] == 0 and graph[ni][nj] == 1:
+                q.append((ni, nj))
+                visited[ni][nj] = 1
+                cnt += 1
+    return cnt
+
+
+t = int(input())
+# 잘못기입받았음
+graph = [list(map(int, input())) for i in range(t)]
+visited = [[0]*t for i in range(t)]
+ans = []
+
+for i in range(t):
+    for j in range(t):
+        if graph[i][j] == 1 and visited[i][j] == 0:
+            ans.append(bfs(i, j))
+
+ans.sort()
+# 출력형식
+print(len(ans), *ans, sep='\n')
