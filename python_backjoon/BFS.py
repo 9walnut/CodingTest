@@ -151,3 +151,16 @@ for i in range(t):
 ans.sort()
 # 출력형식
 print(len(ans), *ans, sep='\n')
+
+
+# 2178 - 미로탐색
+
+
+a, b = map(int, input().split())
+graph = [[for i in range(b)] for i in range(a)]
+visited = [[0]*b for _ in range(a)]
+
+
+
+
+
