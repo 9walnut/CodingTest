@@ -42,7 +42,7 @@ def dfs(ci, cj):
             
 N, M = map(int, input().split())
 # 범위 체크 생략을 위해 0으로 둘러쌓기
-arr = [[0]*(M+2)] + [[0]*(M+2)list(map(int, input().split())) + [0]*(M+2)]
+arr = [[0]*(M+2)] + [[[0]*(M+2) list(map(int, input().split())) + [0]*(M+2)]
 # dp테이블 생성 및 초기값 설정
 dp = [[-1]*(M+2) for _ in range(N+2)]
 dp[1][1] = 1
