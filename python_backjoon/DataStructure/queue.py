@@ -49,12 +49,13 @@ print('>',)
 
 # 요세푸스 문제 - 1158
 n, k = map(int, sys.stdin.readline().split())
-q = ([i+1 for i in range(n)])
-print('<', end='')
-for i in range(n):
-    for j in range(k-1):
+q = deque()
+result = []
+for i in range(1, n+1):
+    q.append(i)
+
+while q:
+    for _ in range(k-1):
         q.append(q.popleft())
-    print(q.popleft(), end='')
-    if (i != n-1):
-        print(',', end=' ')
-print('>')
+    result.append(q.popleft())
+print(str(result).replace('[', '<').replace(']'), '>')
