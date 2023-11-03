@@ -29,3 +29,5 @@ elif k == 2:
     print(*[i[::-1] for i in mirror], sep='\n')
 elif k == 3:
     print(*mirror[::-1], sep='\n')
+
+# 스택 -
