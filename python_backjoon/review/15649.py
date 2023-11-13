@@ -1,3 +1,25 @@
+# N과 M
+n, m = list(map(int, input().split()))
+
+s = []
+
+
+def dfs():
+    if len(s) == m:
+        print(' '.join(map(str, s)))
+        return
+
+    for i in range(1, n+1):
+        if i not in s:
+            s.append(i)
+            dfs()
+            s.pop()
+
+
+dfs()
+
+
+# 다른 풀이
 N, M = map(int, input().split())
 ans = []
 v = [0]*(N+1)  # 중복 확인을 위한 배열
