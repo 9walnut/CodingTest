@@ -1,11 +1,9 @@
-# 쿼드트리 - 분할 정복
+# 1992 쿼드트리
 n = int(input())
-
 board = [list(map(int, input())) for _ in range(n)]
 
 
 def dfs(x, y, n):
-    # 4분할 했을 때 모든 경우가 같지 않은 경우 -1 반환
     check = board[x][y]
     for i in range(x, x+n):
         for j in range(y, y+n):
@@ -14,8 +12,11 @@ def dfs(x, y, n):
                 break
 
     if check == -1:
+      # 모두 같지 않으면 () 괄호 넣기
+      # 처음엔 모두 같지 않기 때문에 () 넣고 시작
         print("(", end='')
         n = n//2
+        # 여기 순서도 중요함
         dfs(x, y, n)
         dfs(x, y+n, n)
         dfs(x+n, y, n)
