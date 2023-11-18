@@ -1,14 +1,4 @@
 # 좌표 정렬하기 2
-n = int(input())
-arr = []
-for _ in range(n):
-    xy = list(map(int, input().split()))
-    arr.append(xy[1], xy[0])
-
-arr.sort()
-
-for i in arr:
-    print(i[1], [0])
 
 # 다른 풀이
 n = int(input())
@@ -30,6 +20,7 @@ for i in range(n):
     x, y = map(int, input().split())
     coord_list.append((x, y))
 
+# 좌표 (x,y)에 대해 (y,x)로 순서쌍 반환
 coord_list.sort(key=lambda x: (x[1], x[0]))
 
 for coord in coord_list:
