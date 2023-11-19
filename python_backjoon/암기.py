@@ -63,3 +63,21 @@ def backtrack(candidate):
             backtrack(next_candidate)
             # 해당 후보군에 대한 탐색을 종료한 이후에는 제거
             remove(next_candidate)
+            
+            
+# CCW 알고리즘
+def ccw(p1, p2, p3):
+    A = p1[0]*p2[1] + p2[0]*p3[1] + p3[0]*p1[1]
+    B = p1[1]*p2[0] + p2[1]*p3[1] + p3[1]*p1[0]
+    if A-B == 0:
+        return 0
+    elif A-B > 0:
+        return 1
+    else:
+        return -1
+
+
+P1 = list(map(int, input().split()))
+P2 = list(map(int, input().split()))
+P3 = list(map(int, input().split()))
+print(ccw(P1, P2, P3))
