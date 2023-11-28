@@ -3,7 +3,7 @@ input = sys.stdin.readline
 sys.setrecursionlimit(10**6)
 
 M, N = map(int, input().split())
-dp = [[-1]*N for _ in range(N)]
+dp = [[-1]*N for _ in range(M)]
 arr = [list(map(int, input().split())) for _ in range(M)]
 dx, dy = [1, -1, 0, 0], [0, 0, 1, -1]
 
