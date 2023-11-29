@@ -1,10 +1,12 @@
 # 트리 순회
 import sys
-n = int(sys.stdin.readline().strip())
+input = sys.stdin.readline
+n = int(input().split())
+
 tree = {}
 
 for _ in range(n):
-    root, left, right = sys.stdin.readline().strip().split()
+    root, left, right = input().strip().split()
     tree[root] = [left, right]
 
 
