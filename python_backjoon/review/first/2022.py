@@ -6,6 +6,7 @@
 from math import sqrt
 
 x, y, c = map(float, input().split())
+# 삼각혁의 특징상 대각선이 더 크기 때문에 그 특성을 이용해서 end는 x,y라는 대각선의 최소로 설정해서 이분탐색
 start, end = 0, min(x, y)
 
 
@@ -20,7 +21,7 @@ while end-start > 1e-6:
     mid = (start+end)/2
     if get_c(mid) >= c:
         result = mid
-        strat = mid
+        start = mid
     else:
         end = mid
 
