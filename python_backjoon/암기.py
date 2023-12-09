@@ -81,3 +81,22 @@ P1 = list(map(int, input().split()))
 P2 = list(map(int, input().split()))
 P3 = list(map(int, input().split()))
 print(ccw(P1, P2, P3))
+
+# 백트래킹 공식
+arr = []
+def back(num,cnt):
+    if num>len(chicken):
+        return
+    
+    if cnt==M:
+        for idx in arr:
+            cx,cy = chicken[idx]
+            print((cx,cy),end=" ")
+        return
+
+    arr.append(num)
+    back(num+1,cnt+1)
+    arr.pop()
+    back(num+1,cnt)
+
+(back(0,0))
