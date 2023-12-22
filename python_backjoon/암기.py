@@ -100,3 +100,24 @@ def back(num,cnt):
     back(num+1,cnt)
 
 (back(0,0))
+
+from collections import deque
+
+def bfs(graph, node, visit):
+    q = deque([node])
+    visit[node] = True
+    
+    while q:
+        v = q.popleft()
+        print(v, end='')
+        for i in graph[v]:
+            if not visit[i]:
+                q.append(i)
+                visit[i] = True
+                
+def dfs(graph, start, visit = []):
+    visit.append(start)
+    for node in graph[start]:
+        if node not in visit:
+            dfs(graph, node, visit)
+    return visit
