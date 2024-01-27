@@ -16,3 +16,14 @@ def solution(numbers):
     numbers = list(map(str, numbers))
     numbers.sort(key=lambda x: x*3, reverse=True)
     return str(int(''.join(numbers)))
+
+# H-index
+
+
+def solution(citations):
+    answer = 0
+    citations.sort(reverse=True)
+    for i in range(len(citations)):
+        if (citations[i] < i+1):
+            return i
+    return len(citations)

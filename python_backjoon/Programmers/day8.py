@@ -33,6 +33,6 @@ def solution(answers):
 
     for idx, num in enumerate(score):
         if num == max(score):
-            answer.append(idx+1)
+            answer.append(idx+1)xka
 
     return answer
