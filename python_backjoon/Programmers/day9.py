@@ -1,3 +1,4 @@
+# 기능 개발
 def solution(progresses, speeds):
     answer = []
     while progresses:
@@ -16,3 +17,22 @@ def solution(progresses, speeds):
             progresses[i] += speeds[i]
 
     return answer
+
+
+def solution1(progresses, sppeds):
+    answer = []
+    while progresses:
+        if progresses[0] >= 100:
+            count = 0
+            while progresses and progresses[0] >= 100:
+                progresses.pop(0)
+                sppeds.pop(0)
+                count += 1
+            answer.append(count)
+
+        for i in range(len(progresses)):
+            progresses[i] += sppeds[i]
+
+    return answer
+
+# 같은 숫자는 싫어
