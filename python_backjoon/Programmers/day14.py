@@ -1,27 +1,6 @@
-import heapq
+# DFS / BFS 네트워크
 from collections import deque
-
-
-def solution(jobs):
-    answer, now, i = 0
-    start = -1
-    heap = []
-
-    while i < len(jobs):
-        for job in jobs:
-            if start < job[0] <= now:
-                heapq.heappush(heap, [job[1], job[0]])
-
-            if heap:
-                current = heapq.heappop(heap)
-                start = now
-                now += current[0]
-                answer += now - current[1]
-                i += 1
-            else:
-                now += 1
-
-    return answer // len(jobs)
+# BFS
 
 
 def solution(n, computers):
@@ -50,22 +29,26 @@ def BFS(n, computers, k, visited):
                 if visited[i] == False:
                     visited[i] = True
                     queue.append(computers[i])
+
     return True
 
+# DFS 풀이
 
-def solution(n, conmputers):
+
+def solution(n, computers):
     network = 0
-    visited = [False] * n
-    for num in range(n):
+    visited = [False] * n  # 컴퓨터 갯수만큼
+    for num in range(n):  # 각 컴퓨터 돌면서 방문안했으면 DFS 실행
         if visited[num] == False:
-            DFS(n, conmputers, num, visited)
-            network += 1
+            DFS(n, computers, num, visited)
+            network += 1  # 연결된 하나의 네트워크 +1
     return network
 
 
 def DFS(n, computers, num, visited):
-    visited[num] = True
-    for cnt in range(n):
-        if num != cnt and computers[num][cnt] == 1:
-            if visited[cnt] == False:
+    visited[num] = True  # 방문 처리
+    for cnt in range(n):  # 컴퓨터 갯수 만큼 반복
+        # 자기 자신과의 연결 제외 and 컴퓨터가 서로 연결되어있다면 (문제 조건에서 숫자 1이면 연결)
+        if num != cnt and computers[num][cnt] == 1:  # 자기 자신이 연결
+            if visited[cnt] == False:  # 미방문
                 DFS(n, computers, cnt, visited)
