@@ -65,3 +65,11 @@ print(*ans_bfs)
 # 문제가 바뀌면 조건 부분이 바뀌는 것임
 
 # 미로 탐색
+def 
+
+
+N, M = map(int, input().split())
+arr = [list(map(int, input())) for _ in range(N)]
+
+ans = bfs(0,0,N-1, M-1)
+print(ans)
