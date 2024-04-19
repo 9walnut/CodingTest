@@ -58,3 +58,30 @@ def bfs(begin, target, words):
 
             if count == 1:
                 queue.append([word, step+1])
+
+# 네트워크(BFS)
+
+
+def solution(n, computers):
+    answer = 0
+    visited = [False for i in range(n)]
+
+    for com in range(n):
+        if visited[com] == False:
+            # 컴퓨터 수, 컴퓨터들 연결된 리스트, 현재 방문중인 인덱스, 방문 컴퓨터 표시
+            BFS(n, computers, com, visited)
+            answer += 1  # 빠져나오게 되면 하나의 네트워크로 체크
+    return answer
+
+
+def BFS(n, computers, com, visited):
+    visited[com] = True
+    queue = []
+    queue.append(com)
+    while len(queue) != 0:
+        com = queue.pop(0)
+        visited[com] = True
+        for connect in range(n):
+            if connect != com and computers[com][connect] == 1:  # 연결된 컴퓨터
+                if visited[connect] == False:
+                    queue.append(connect)
