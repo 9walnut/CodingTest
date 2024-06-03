@@ -1,0 +1,103 @@
+
+    <html>
+    <head>
+        <style>
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                margin-top: 50px;
+            }
+            .output {
+                margin-top: 20px;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+            }
+            .input-field {
+                width: 300px;
+                height: 100px;
+            }
+        </style>
+        <script>
+            function highlightDifferences(str1, str2) {
+                function escapeHtml(unsafe) {
+                    return unsafe.replace(/[&<"']/g, function(m) {
+                        switch (m) {
+                            case '&':
+                                return '&amp;';
+                            case '<':
+                                return '&lt;';
+                            case '>':
+                                return '&gt;';
+                            case '"':
+                                return '&quot;';
+                            case "'":
+                                return '&#039;';
+                        }
+                    });
+                }
+                var diff = Diff.diffChars(str1, str2);
+                var resultStr1 = "";
+                var resultStr2 = "";
+
+                diff.forEach(function(part){
+                    var color = part.added ? 'lightblue' :
+                        part.removed ? 'pink' : 'white';
+                    var span = '<span style="background-color: ' + color + ';">' + escapeHtml(part.value) + '</span>';
+                    if (part.added) {
+                        resultStr2 += span;
+                    } else if (part.removed) {
+                        resultStr1 += span;
+                    } else {
+                        resultStr1 += escapeHtml(part.value);
+                        resultStr2 += escapeHtml(part.value);
+                    }
+                });
+
+                return [resultStr1, resultStr2];
+            }
+
+            function showDifference() {
+                var str1 = document.getElementById("input1").value;
+                var str2 = document.getElementById("input2").value;
+
+                var result = highlightDifferences(str1, str2);
+                document.getElementById("output1").innerHTML = result[0];
+                document.getElementById("output2").innerHTML = result[1];
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+        <script>
+            var Diff = {
+                diffChars: function(oldStr, newStr) {
+                    var dmp = new diff_match_patch();
+                    var diffs = dmp.diff_main(oldStr, newStr);
+                    dmp.diff_cleanupSemantic(diffs);
+                    return diffs.map(function(part) {
+                        return {
+                            added: part[0] === 1,
+                            removed: part[0] === -1,
+                            value: part[1]
+                        };
+                    });
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <h2>String Difference Highlighter</h2>
+            <textarea id="input1" class="input-field" placeholder="Enter first string"></textarea>
+            <textarea id="input2" class="input-field" placeholder="Enter second string"></textarea>
+            <button onclick="showDifference()">Show Difference</button>
+            <div class="output">
+                <p>First String:</p>
+                <p id="output1"></p>
+                <p>Second String:</p>
+                <p id="output2"></p>
+            </div>
+        </div>
+    </body>
+    </html>
+    
